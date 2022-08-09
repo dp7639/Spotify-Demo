@@ -1,22 +1,40 @@
 import type { NextPage } from 'next'
-import Sidebar from '../components/Sidebar'
-import Center from '../components/Center'
+import Head from 'next/head';
+import { getSession } from 'next-auth/react';
+import Sidebar from '../components/Sidebar';
+import Center from '../components/Center';
+import Player from '../components/Player';
 
 
 const Home: NextPage = () => {
   return (
     <div className='bg-black h-screen overflow-hidden'>
      
+     <Head>
+        <title>Spotify</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
    <main className='flex'>
     <Sidebar />
     <Center />
     
    </main>
-     <div>
-      {/* Player */}
+   <div className="sticky bottom-0">
+   <Player />
       </div>
     </div>
   )
 }
 
 export default Home
+
+export async function getServerSideProps({context}:{context:any}) {
+  const session = await getSession(context);
+
+  return {
+    props: {
+      session,
+    },
+  };
+}

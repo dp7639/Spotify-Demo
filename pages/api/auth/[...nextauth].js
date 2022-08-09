@@ -40,6 +40,9 @@ export default NextAuth({
   pages:{
     signIn:'/login'
   },
+  session: {
+    strategy: 'jwt',
+    },
   callbacks:{
     async jwt({token,account,user}) {
       // initial sign in
