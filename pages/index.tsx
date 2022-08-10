@@ -6,7 +6,7 @@ import Center from '../components/Center';
 import Player from '../components/Player';
 
 
-const Home: NextPage = () => {
+const Home: NextPage = ({session}:{session:any}) => {
   return (
     <div className='bg-black h-screen overflow-hidden'>
      
@@ -29,7 +29,7 @@ const Home: NextPage = () => {
 
 export default Home
 
-export async function getServerSideProps({context}:{context:any}) {
+export async function getServerSideProps(context:any) {
   const session = await getSession(context);
 
   return {

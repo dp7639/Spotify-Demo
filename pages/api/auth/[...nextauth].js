@@ -18,7 +18,7 @@ async function refreshAccessToken(token) {
       // Replace if new one came back elese fall back to old refresh token
     }
   } catch(error) {
-    console.error(error)
+    console.log(error)
     return {
       ...token,
       error:'RefreshAccessTokenError'
@@ -38,7 +38,7 @@ export default NextAuth({
   ],
   secret:process.env.JWT_SECRET,
   pages:{
-    signIn:'/login'
+    signIn:'/login',
   },
   session: {
     strategy: 'jwt',
